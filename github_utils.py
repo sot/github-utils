@@ -16,7 +16,9 @@ STANDARD_LABELS = dict([(u'bug', u'fc2929'),
                         (u'wontfix', u'ffffff'),
                         (u'Priority-Low', u'fee8c8'),
                         (u'Priority-Medium', u'fdbb84'),
-                        (u'Priority-High', u'e34a33')])
+                        (u'Priority-High', u'e34a33'),
+                        (u'Ready for Final Review', u'fee8c8')])
+
 
 def request_results(url, *args, **kwargs):
     """

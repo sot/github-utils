@@ -19,6 +19,8 @@ STANDARD_LABELS = dict([(u'bug', u'fc2929'),
                         (u'Priority-High', u'e34a33'),
                         (u'Ready for Final Review', u'fee8c8')])
 
+# Repos that do not have all standard labels for a reason
+DONT_STANDARDIZE_REPOS = set(['ska-projects'])
 
 def request_results(url, *args, **kwargs):
     """
@@ -246,6 +248,12 @@ def standardize_labels_for_repos(repos, owner='sot'):
     :param owner: string repo owner (default = 'sot')
     """
     for repo in repos:
-        print('Updating {}'.format(get_name(repo)))
+        name = get_name(repo)
+
+        if name in DONT_STANDARIZE_REPOS:
+            print('Skipping {}'.format(name))
+            continue
+
+        print('Updating {}'.format(name))
         standardize_repo_labels(repo, owner)
         print('')
